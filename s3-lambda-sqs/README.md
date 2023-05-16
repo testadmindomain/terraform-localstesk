@@ -18,16 +18,5 @@ awslocal sqs receive-message --wait-time-seconds 20 \
 	| jq -r ".Messages[0].Body"
 ```
 
-## Code mounting
 
-The local lambda code mounting works with terraform:
-
-```terraform
-resource "aws_lambda_function" "func" {
-  # instead of deploying the lambda from a zip file,
-  # we can also deploy it using local code mounting
-  s3_bucket = "__local__"
-  s3_key    = "${path.cwd}/lambda"
-
-...
 ```
